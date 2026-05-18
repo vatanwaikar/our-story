@@ -123,6 +123,8 @@
   }
   html {
   scroll-behavior: smooth;
+  height: 100%;
+  width: 100%;
 
   background-image:
     linear-gradient(
@@ -136,6 +138,7 @@
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 
   min-height: 100vh;
   overflow-x: hidden;
@@ -143,8 +146,9 @@
 
 @media (max-width: 768px) {
   html {
-    background-position: center top;
+    background-position: center center;
     background-size: cover;
+    background-attachment: fixed;
   }
 }
   body {

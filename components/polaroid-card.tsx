@@ -23,21 +23,22 @@ export default function PolaroidCard({
       viewport={{ once: true }}
       className="group"
     >
-      <div className="relative w-full max-w-xs mx-auto">
+      <div className="relative w-full max-w-xs sm:max-w-sm lg:max-w-md mx-auto">
         {/* Polaroid Card */}
-        <div className="bg-gradient-to-br from-[#f5f1e8] to-[#e8dcc8] p-3 shadow-2xl rounded-sm hover:shadow-3xl transition-shadow duration-300"
+        <div className="bg-gradient-to-br from-[#f5f1e8] to-[#e8dcc8] p-2 sm:p-3 shadow-md sm:shadow-lg md:shadow-2xl rounded-sm hover:shadow-3xl transition-shadow duration-300"
           style={{
             boxShadow: '0 10px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(212, 168, 147, 0.2)'
           }}
         >
           {/* Image Container */}
           <div className="bg-white overflow-hidden border-2 border-[#e8dcc8]">
-            <div className="relative w-full h-[450px] overflow-hidden rounded-2xl bg-black">
-  <img
-    src={src}
-    alt={alt}
-    className="w-full h-full object-cover"
-  />
+            <div className="relative w-full h-64 sm:h-80 md:h-96 overflow-hidden rounded-lg sm:rounded-2xl bg-black">
+              <img
+                src={src}
+                alt={alt}
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
               {/* Vignette overlay */}
               <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-black/10 pointer-events-none" />
             </div>
@@ -45,15 +46,15 @@ export default function PolaroidCard({
 
           {/* Caption Area */}
           {caption && (
-            <div className="mt-3 px-1">
-              <p className="text-sm md:text-base text-gray-700 font-light italic handwriting">
+            <div className="mt-2 sm:mt-3 px-1">
+              <p className="text-xs sm:text-sm md:text-base text-gray-700 font-light italic handwriting">
                 {caption}
               </p>
             </div>
           )}
 
           {/* Film strip detail */}
-          <div className="mt-3 flex justify-center gap-1">
+          <div className="mt-2 sm:mt-3 flex justify-center gap-1">
             <div className="w-1 h-1 rounded-full bg-gray-300" />
             <div className="w-1 h-1 rounded-full bg-gray-300" />
             <div className="w-1 h-1 rounded-full bg-gray-300" />

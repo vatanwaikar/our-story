@@ -509,7 +509,7 @@ className="object-cover bg-black group-hover:scale-105 transition-transform dura
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-12"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8 mb-12"
           >
             {galleryImages.map((image, index) => (
               <motion.div
@@ -518,36 +518,36 @@ className="object-cover bg-black group-hover:scale-105 transition-transform dura
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className={`${getGridPosition(index)} cursor-pointer group`}
+                className="cursor-pointer group w-full"
                 style={{
                   transform: `rotate(${index % 2 === 0 ? -2 : 2}deg)`,
                 }}
                 onClick={() => setSelectedImageId(image.id)}
               >
                 {/* Polaroid card */}
-                <div className="relative bg-white p-3 sm:p-4 rounded-sm shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:rotate-0">
+                <div className="relative bg-white p-2 sm:p-3 md:p-4 rounded-sm shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:rotate-0 h-full">
                   {/* Image container */}
                   <div className="w-full aspect-square bg-gradient-to-br from-accent/20 to-primary/20 flex items-center justify-center relative overflow-hidden rounded-xs">
                     <img
-  src={image.image}
-  alt={image.title}
-  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-/>
+                      src={image.image}
+                      alt={image.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
 
                     <motion.div
                       initial={{ opacity: 0 }}
                       whileHover={{ opacity: 1 }}
                       transition={{ duration: 0.3 }}
-                      className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-3"
+                      className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-2 sm:p-3"
                     >
-                      <h3 className="text-sm sm:text-base font-semibold text-white text-center line-clamp-2">{image.title}</h3>
+                      <h3 className="text-xs sm:text-sm font-semibold text-white text-center line-clamp-2">{image.title}</h3>
                     </motion.div>
                   </div>
 
                   {/* Polaroid caption area */}
-                  <div className="mt-3 sm:mt-4">
-                    <p className="text-xs sm:text-sm text-gray-600 italic">{image.date}</p>
-                    <p className="text-xs text-gray-500 mt-1 line-clamp-1">A captured moment</p>
+                  <div className="mt-2 sm:mt-3 md:mt-4">
+                    <p className="text-xs text-gray-600 italic">{image.date}</p>
+                    <p className="text-xs text-gray-500 mt-0.5 sm:mt-1 line-clamp-1">A captured moment</p>
                   </div>
                 </div>
               </motion.div>
@@ -649,7 +649,7 @@ className="object-cover bg-black group-hover:scale-105 transition-transform dura
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative bg-card border border-border rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+              className="relative bg-card border border-border rounded-xl w-full max-w-[95vw] sm:max-w-3xl max-h-[95vh] overflow-y-auto"
             >
               <button
                 onClick={() => setSelectedImageId(null)}
@@ -671,13 +671,7 @@ className="object-cover bg-black group-hover:scale-105 transition-transform dura
                 </svg>
               </button>
 
-             <div className="w-full aspect-square sm:aspect-video overflow-hidden">
-  <img
-    src={selectedImage.image}
-    alt={selectedImage.title}
-    className="w-full h-full object-cover"
-  />
-</div>
+              className="w-full h-full object-cover"
 
 
               <div className="p-4 sm:p-8">

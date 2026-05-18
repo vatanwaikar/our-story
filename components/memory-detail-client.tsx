@@ -102,7 +102,7 @@ export default function MemoryDetailClient({ memory }: MemoryDetailClientProps) 
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center">Moments Captured</h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 md:gap-8 lg:gap-12 mb-12">
               {memory.photos.map((photo, index) => (
                 <div key={index} className="flex justify-center">
                   <PolaroidCard

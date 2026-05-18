@@ -80,6 +80,8 @@ const galleryImages: GalleryImage[] = [
 ]
 
 const getGridPosition = (index: number) => {
+  // Mobile: all items same size
+  // Desktop: apply masonry layout
   const sizes = [
     'small',
     'large',
@@ -95,7 +97,7 @@ const getGridPosition = (index: number) => {
 
   switch (size) {
     case 'large':
-      return 'col-span-2 row-span-2'
+     return 'md:col-span-1 lg:col-span-2 lg:row-span-2'
 
     case 'medium':
       return 'col-span-1 row-span-1'
@@ -125,20 +127,20 @@ export default function GalleryPage() {
     <main className="min-h-screen relative overflow-hidden pt-32 pb-20">
       <Particles />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4">
+      <div className="relative z-10 max-w-7xl mx-auto px-2 sm:px-4">
 
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="mb-16 text-center"
+          className="mb-12 sm:mb-16 text-center px-2"
         >
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6">
             Photo Gallery
           </h1>
 
-          <p className="text-lg text-foreground/60">
+          <p className="text-sm sm:text-base md:text-lg text-foreground/60">
             Moments captured in time. Click any photo to view larger.
           </p>
         </motion.div>
@@ -148,7 +150,7 @@ export default function GalleryPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-6 mb-12 auto-rows-max"
         >
           {galleryImages.map((image, index) => (
             <motion.div
@@ -162,10 +164,10 @@ export default function GalleryPage() {
               viewport={{ once: true }}
               className={`${getGridPosition(
                 index
-              )} cursor-pointer group relative overflow-hidden rounded-2xl border border-border/50 hover:border-accent/50 transition-all duration-300`}
+              )} cursor-pointer group relative overflow-hidden rounded-lg md:rounded-2xl border border-border/50 hover:border-accent/50 transition-all duration-300`}
               onClick={() => handleImageClick(image)}
             >
-              <div className="relative w-full h-full min-h-80 md:min-h-96 overflow-hidden">
+              <div className="relative w-full h-40 md:h-56 lg:h-72 overflow-hidden">
 
                 {/* Actual Image */}
                 <Image
@@ -185,11 +187,11 @@ export default function GalleryPage() {
                   transition={{ duration: 0.3 }}
                   className="absolute inset-0 flex flex-col items-center justify-center text-center p-4"
                 >
-                  <h3 className="text-xl font-semibold text-white mb-2">
+                  <h3 className="text-sm sm:text-lg md:text-xl font-semibold text-white mb-1 sm:mb-2">
                     {image.title}
                   </h3>
 
-                  <p className="text-sm text-white/80">
+                  <p className="text-xs sm:text-sm text-white/80">
                     {image.date}
                   </p>
                 </motion.div>
@@ -234,18 +236,18 @@ export default function GalleryPage() {
                 </button>
 
                 {/* Large image */}
-                <div className="relative w-full aspect-square md:aspect-video">
+                <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] bg-black flex items-center justify-center">
                   <Image
                     src={selectedImage.image}
                     alt={selectedImage.title}
                     fill
-                    className="object-cover"
+                    className="object-contain"
                   />
                 </div>
 
                 {/* Info */}
-                <div className="p-8">
-                  <h2 className="text-3xl font-bold mb-2">
+                <div className="p-4 sm:p-6 md:p-8">
+                  <h2 className="text-2xl sm:text-3xl font-bold mb-2">
                     {selectedImage.title}
                   </h2>
 
